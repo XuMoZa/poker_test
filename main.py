@@ -10,5 +10,5 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.include_router(game_router)
 
-if __name__ == "__main__":
-    uvicorn.run(app, port=8000)
+#if __name__ == "__main__":
+#    uvicorn.run(app, port=8000)
