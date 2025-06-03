@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Poker Game</title>
+    <link rel="stylesheet" href="/static/base.css">
+    <style>
+        .refresh-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .refresh-button:hover {
+            background-color: #45a049;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Poker Game</h1>
+
+        <div class="players">
+            <div class="player">
+                <h2>{{ player1.name }} {% if winner == player1.name %}🏆{% endif %}</h2>
+                <p>Chips: {{ player1.chips }}</p>
+                <div class="hand">
+                    {% for card in player1.hand %}
+                        <img class="card" src="/static/cards/{{ card.value }}{{ card.suit }}.png" alt="{{ card.value }}{{ card.suit }}">
+                    {% endfor %}
+                </div>
+                <p class="combination">Combination: {{ combination1 }}</p>
+            </div>
+
+            <div class="player">
+                <h2>{{ player2.name }} {% if winner == player2.name %}🏆{% endif %}</h2>
+                <p>Chips: {{ player2.chips }}</p>
+                <div class="hand">
+                    {% for card in player2.hand %}
+                        <img class="card" src="/static/cards/{{ card.value }}{{ card.suit }}.png" alt="{{ card.value }}{{ card.suit }}">
+                    {% endfor %}
+                </div>
+                <p class="combination">Combination: {{ combination2 }}</p>
+            </div>
+        </div>
+
+        <div class="table">
+            <h3>Cards on Table</h3>
+            <div class="hand">
+                {% for card in table.cards %}
+                    <img class="card" src="/static/cards/{{ card.value }}{{ card.suit }}.png" alt="{{ card.value }}{{ card.suit }}">
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="winner">
+            <h2>Winner: {{ winner }}</h2>
+        </div>
+
+        <div class="center">
+            <button class="refresh-button" onclick="location.reload()">Обновить</button>
+        </div>
+    </div>
+</body>
+</html>
